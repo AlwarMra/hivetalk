@@ -11,6 +11,7 @@ const LogoIcon = ({ size = '30' }) => {
       aria-hidden='true'
       role='img'
       preserveAspectRatio='xMidYMid meet'
+      className='inline'
     >
       <path
         fill='#F4900C'
