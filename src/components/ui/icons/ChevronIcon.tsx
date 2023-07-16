@@ -1,8 +1,13 @@
 import React from 'react'
 
-const ChevronIcon = () => {
+const ChevronIcon = ({ styles = '' }) => {
   return (
-    <svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={styles}
+    >
       <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
       <g
         id='SVGRepo_tracerCarrier'
