@@ -3,6 +3,7 @@ import SignIn from '@/components/SignIn'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
+import ChevronIcon from '@/components/ui/icons/ChevronIcon'
 
 const page = () => {
   return (
@@ -15,7 +16,7 @@ const page = () => {
             'self-start -mt-20',
           )}
         >
-          Home
+          <ChevronIcon styles='mr-2 h-4 w-4' /> Home
         </Link>
         <SignIn />
       </div>
