@@ -4,7 +4,7 @@ import { FC, useState } from 'react'
 import { Button } from './ui/Button'
 import { cn } from '@/lib/utils'
 import { signIn } from 'next-auth/react'
-import GoogleIcon from './ui/icons/GoogleIcon'
+import GoogleIcon from './ui/icons/GithubIcon'
 import { useToast } from '@/hooks/use-toast'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -16,7 +16,7 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
   const loginWithGoogle = async () => {
     setIsLoading(true)
     try {
-      await signIn('google')
+      await signIn('github')
     } catch (error) {
       toast({
         title: 'There was a problem',
@@ -37,8 +37,8 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
         isLoading={isLoading}
         onClick={loginWithGoogle}
       >
-        {isLoading ? null : <GoogleIcon size='16' styles='mr-2' />}
-        Google
+        {isLoading ? null : <GoogleIcon size='20' styles='mr-2' />}
+        Github
       </Button>
     </div>
   )
