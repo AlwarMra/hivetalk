@@ -79,10 +79,10 @@ model Honeycomb {
 model Subscription {
   user        User      @relation(fields: [userId], references: [id])
   userId      String
-  honeycomb   Honeycomb @relation(fields: [subredditId], references: [id])
-  subredditId String
+  honeycomb   Honeycomb @relation(fields: [honeycombId], references: [id])
+  honeycombId String
 
-  @@id([userId, subredditId])
+  @@id([userId, honeycombId])
 }
 
 model Post {
