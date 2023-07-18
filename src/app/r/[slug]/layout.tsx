@@ -1,3 +1,4 @@
+import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle'
 import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { format } from 'date-fns'
@@ -79,6 +80,16 @@ const Layout = async ({
               {honeycomb.creatorId === session?.user.id ? (
                 <div className='flex justify-between gap-x-4 py-3'>
                   You created this community
+                </div>
+              ) : null}
+
+              {honeycomb.creatorId !== session?.user.id ? (
+                <div>
+                  <SubscribeLeaveToggle
+                    honeycombId={honeycomb.id}
+                    honeycombName={honeycomb.name}
+                    isSubscribed={isSubscribed}
+                  />
                 </div>
               ) : null}
             </dl>

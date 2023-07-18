@@ -95,7 +95,7 @@ model Post {
   authorId    String
   honeycomb   Honeycomb @relation(fields: [honeycombId], references: [id])
   honeycombId String
-  comments    Comment[] 
+  comments    Comment[]
   votes       Vote[]
 }
 
@@ -105,7 +105,7 @@ model Comment {
   createdAt DateTime @default(now())
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
-  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
 
   replyToId String?
