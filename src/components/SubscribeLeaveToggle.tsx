@@ -2,7 +2,7 @@
 import { FC, startTransition } from 'react'
 import { Button } from './ui/Button'
 import { useMutation } from '@tanstack/react-query'
-import { SubscribeToHoneycombPayload } from '@/lib/honeycomb'
+import { SubscribeToHoneycombPayload } from '@/lib/validators/honeycomb'
 import axios, { AxiosError } from 'axios'
 import useCustomToast from '@/hooks/use-custom-toast'
 import { toast } from '@/hooks/use-toast'

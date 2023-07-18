@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FC, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
-import { CreateHoneycombPayload } from '@/lib/honeycomb'
+import { CreateHoneycombPayload } from '@/lib/validators/honeycomb'
 import { toast } from '@/hooks/use-toast'
 import useCustomToast from '@/hooks/use-custom-toast'
 
