@@ -23,9 +23,9 @@ const page = async ({ params }: pageProps) => {
 
   return (
     <div className='flex flex-col items-start gap-6'>
-      <div className='border border-amber-200 pb-5'>
-        <div className='-ml-2 -mt-2 flex flex-wrap items-baseline'>
-          <h3 className='md-2 mt-2 text-base font-semibold leading-6 text-gray-900'>
+      <div className='border border-amber-200 px-2 py-4'>
+        <div className='flex flex-wrap items-baseline'>
+          <h3 className='text-base font-semibold leading-6 text-gray-900'>
             Create post
           </h3>
           <p className='ml-2 mt-1 truncate text-sm text-gray-500'>
