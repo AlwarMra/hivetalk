@@ -1,6 +1,6 @@
 import { db } from '@/lib/db'
 import { getAuthSession } from '@/lib/auth'
-import { honeycombValidator } from '@/lib/honeycomb'
+import { honeycombValidator } from '@/lib/validators/honeycomb'
 import { z } from 'zod'
 
 export async function POST(req: Request) {
