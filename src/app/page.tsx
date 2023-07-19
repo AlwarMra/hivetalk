@@ -1,15 +1,21 @@
+import CustomFeed from '@/components/CustomFeed'
+import GeneralFeed from '@/components/GeneralFeed'
 import { buttonVariants } from '@/components/ui/Button'
+import { getAuthSession } from '@/lib/auth'
 import Link from 'next/link'
 
-export default function Home() {
+export default async function Home() {
+  const session = await getAuthSession()
+
   return (
     <>
       <h1 className='font-bold text-3xl md:text-4xl'>Your feed</h1>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6'>
-        {/* Feed */}
+        {/* @ts-expect-error server component */}
+        {session ? <CustomFeed /> : <GeneralFeed />}
 
         {/* honeycomb info */}
-        <div className='overflow-hidden h-fit rounded-lg border border-amber-300 order-first md:order-first'>
+        <div className='overflow-hidden h-fit rounded-lg border border-amber-300'>
           <div className='bg-amber-100 px-6 py-4'>
             <p className='font-semibold py-3 flex items-center gap-1.5'>Home</p>
           </div>
