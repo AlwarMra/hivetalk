@@ -1,7 +1,7 @@
 import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
-import PostComment from './PostComment'
 import CreateComment from './CreateComment'
+import PostComment from './PostComment'
 
 interface CommentSectionProps {
   postId: string
@@ -49,8 +49,39 @@ const CommentSection = async ({ postId }: CommentSectionProps) => {
             return (
               <div key={topLevelCom.id} className='flex flex-col'>
                 <div className='mb-2'>
-                  <PostComment comment={topLevelCom} />
+                  <PostComment
+                    postId={postId}
+                    comment={topLevelCom}
+                    currentVote={topLevelComVote}
+                    votesAmt={topLevelComVotesAmt}
+                  />
                 </div>
+                {topLevelCom.replies
+                  .sort((a, b) => b.votes.length - a.votes.length)
+                  .map(reply => {
+                    const repliesVotesAmt = reply.votes.reduce((acc, vote) => {
+                      if (vote.type === 'UP') return acc + 1
+                      if (vote.type === 'DOWN') return acc - 1
+                      return acc
+                    }, 0)
+                    const replyVote = reply.votes.find(
+                      vote => vote.userId === session?.user.id,
+                    )
+
+                    return (
+                      <div
+                        key={reply.id}
+                        className='ml-2 py-2 pl-4 border-1-2 border-zinc'
+                      >
+                        <PostComment
+                          comment={reply}
+                          currentVote={replyVote}
+                          votesAmt={repliesVotesAmt}
+                          postId={postId}
+                        />
+                      </div>
+                    )
+                  })}
               </div>
             )
           })}
