@@ -1,3 +1,6 @@
+import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
+import CommentSection from '@/components/CommentSection'
 import EditorOutput from '@/components/EditorOutput'
 import PostVoteServer from '@/components/post-vote/PostVoteServer'
 import { buttonVariants } from '@/components/ui/Button'
@@ -8,8 +11,6 @@ import { redis } from '@/lib/redis'
 import { formatTimeToNow } from '@/lib/utils'
 import { CachedPost } from '@/types/redis'
 import { Post, User, Vote } from '@prisma/client'
-import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
 
 interface pageProps {
   params: {
@@ -40,7 +41,7 @@ const page = async ({ params }: pageProps) => {
 
   return (
     <div>
-      <div className='h-full flex flex-col sm:flex-row items-center justify-between'>
+      <div className='h-full sm:items-start sm:flex-row flex flex-col items-center justify-between'>
         <Suspense fallback={<PostVoteShell />}>
           {/* @ts-expect-error server component */}
           <PostVoteServer
@@ -67,6 +68,10 @@ const page = async ({ params }: pageProps) => {
             {post?.title ?? cachedPost.title}
           </h1>
           <EditorOutput content={post?.content ?? cachedPost.content} />
+          <Suspense fallback={<SpinnerIcon />}>
+            {/* @ts-expect-error server component */}
+            <CommentSection postId={post?.id ?? cachedPost.id} />
+          </Suspense>
         </div>
       </div>
     </div>
