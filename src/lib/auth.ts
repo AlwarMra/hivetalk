@@ -4,15 +4,9 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import GithubProvider from 'next-auth/providers/github'
 import { nanoid } from 'nanoid'
 
-const githubId =
-  process.env.NODE_ENV === 'production'
-    ? process.env.GITHUB_CLIENT_ID_PROD
-    : process.env.GITHUB_CLIENT_ID_DEV
+const githubId = process.env.GITHUB_CLIENT_ID
 
-const githubSecret =
-  process.env.NODE_ENV === 'production'
-    ? process.env.GITHUB_CLIENT_SECRET_PROD
-    : process.env.GITHUB_CLIENT_SECRET_DEV
+const githubSecret = process.env.GITHUB_CLIENT_SECRET
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
