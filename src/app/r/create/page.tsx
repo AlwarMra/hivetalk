@@ -2,17 +2,15 @@
 
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { useRouter } from 'next/navigation'
-import { FC, useState } from 'react'
+import useCustomToast from '@/hooks/use-custom-toast'
+import { toast } from '@/hooks/use-toast'
+import { CreateHoneycombPayload } from '@/lib/validators/honeycomb'
 import { useMutation } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
-import { CreateHoneycombPayload } from '@/lib/validators/honeycomb'
-import { toast } from '@/hooks/use-toast'
-import useCustomToast from '@/hooks/use-custom-toast'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
-interface pageProps {}
-
-const Page: FC<pageProps> = ({}) => {
+const Page = () => {
   const [input, setInput] = useState<string>('')
   const router = useRouter()
   const { loginToast } = useCustomToast()

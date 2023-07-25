@@ -26,7 +26,6 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     data: queryResults,
     refetch,
     isFetched,
-    isFetching,
   } = useQuery({
     queryFn: async () => {
       if (!input) return []
